@@ -22,7 +22,9 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
             <div className="ReactCreditCard__shiny" />
             <img className="ReactCreditCard__logo" src="" />
             <div className={displayClassName('number')}>{formatNumber(props.number, cardInfo)}</div>
-            <div className ={displayClassName('name')}>{props.name === '' ? props.placeholderName : props.name}</div>
+            <div className={displayClassName('name')}>
+              {props.name === '' ? props.placeholderName : props.name}
+            </div>
           </div>
         </div>
         <div className="ReactCreditCard__back">
@@ -44,9 +46,9 @@ function getCardInfo(number: string, type?: string): { maxLength: number; brand:
 
   if (brand) {
     if (brand === 'amex') {
-      return {brand, maxLength: 15}
+      return { brand, maxLength: 15 }
     } else {
-      return {brand, maxLength: 16}
+      return { brand, maxLength: 16 }
     }
   }
 
@@ -63,7 +65,7 @@ function displayClassName(prop: FOCUS_TYPE, focused?: FOCUS_TYPE): string {
   return className
 }
 
-function formatNumber(number: string, cardInfo: { maxLength: number, brand: string }): string {
+function formatNumber(number: string, cardInfo: { maxLength: number; brand: string }): string {
   let string = !number ? '' : number
   const maxLength = cardInfo.maxLength
 
@@ -79,13 +81,18 @@ function formatNumber(number: string, cardInfo: { maxLength: number, brand: stri
     const spaceIndex1 = 4
     const spaceIndex2 = 10
 
-    string = string.substring(0, spaceIndex1) + ' ' + string.substring(spaceIndex1, spaceIndex2) + ' ' + string.substring(spaceIndex2)
+    string =
+      string.substring(0, spaceIndex1) +
+      ' ' +
+      string.substring(spaceIndex1, spaceIndex2) +
+      ' ' +
+      string.substring(spaceIndex2)
   } else {
     const numOfSpaces = Math.ceil(maxLength / 4)
     let i = 1
 
     for (i; i <= numOfSpaces; i++) {
-      const spaceIndex = (i * 4 + (i - 1))
+      const spaceIndex = i * 4 + (i - 1)
       string = string.slice(0, spaceIndex) + ' ' + string.slice(spaceIndex)
     }
   }

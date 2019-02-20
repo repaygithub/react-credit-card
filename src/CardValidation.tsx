@@ -7,7 +7,7 @@ const cards = [
     format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/,
     length: [15],
     cvcLength: [4],
-    luhn: true
+    luhn: true,
   },
   {
     type: 'discover',
@@ -23,7 +23,7 @@ const cards = [
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
+    luhn: true,
   },
   {
     type: 'visa',
@@ -31,23 +31,26 @@ const cards = [
     format: defaultFormat,
     length: [13, 16, 19],
     cvcLength: [3],
-    luhn: true
-  }
+    luhn: true,
+  },
 ]
 
-function cardFromNumber(number: string): { type: string,
-                                           pattern: RegExp,
-                                           format: RegExp,
-                                           length: number[],
-                                           cvcLength: number[],
-                                           luhn: boolean } {
+function cardFromNumber(
+  number: string
+): {
+  type: string
+  pattern: RegExp
+  format: RegExp
+  length: number[]
+  cvcLength: number[]
+  luhn: boolean
+} {
   number = number.replace(/\D/g, '')
   let card = cards.find(card => {
     return card.pattern.test(number)
   })
   return card
 }
-
 
 export default function cardType(number: string): string {
   if (!number) {
