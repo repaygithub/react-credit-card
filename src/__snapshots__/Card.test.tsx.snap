@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React Credit Card should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="ReactCreditCard__container"
+  >
+    <div
+      class="ReactCreditCard "
+    >
+      <div
+        class="ReactCreditCard__front"
+      >
+        <div
+          class="ReactCreditCard__lower"
+        >
+          <div
+            class="ReactCreditCard__shiny"
+          />
+          <img
+            class="ReactCreditCard__logo"
+            src=""
+          />
+          <div
+            class="ReactCreditCard__number ReactCreditCard__display"
+          />
+        </div>
+      </div>
+      <div
+        class="ReactCreditCard__back"
+      >
+        <div
+          class="ReactCreditCard__bar"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

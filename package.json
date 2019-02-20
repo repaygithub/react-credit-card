@@ -1,0 +1,59 @@
+{
+  "name": "@repay/react-credit-card",
+  "version": "0.0.1",
+  "description": "Credit card display in React",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "start-storybook -p 9001 -c .storybook",
+    "tdd": "yarn jest --watch"
+  },
+  "repository": "https://github.com/repaygithub/react-credit-card",
+  "contributors": [
+    "JamesNimlos <jnimlos@repay.com>",
+    "Dhalton <dhuber@repay.com>"
+  ],
+  "license": "MIT",
+  "jest": {
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.ts"],
+    "transform": {
+      "^.+\\.(t|j)sx?$": "babel-jest"
+    },
+    "testRegex": "src/.*\\.test\\.(jsx?|tsx?)$"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/plugin-transform-destructuring": "^7.3.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@repay/eslint-config": "^1.0.2",
+    "@storybook/addon-info": "^4.1.12",
+    "@storybook/addon-knobs": "^4.1.12",
+    "@storybook/addon-options": "^4.1.12",
+    "@storybook/react": "^4.1.12",
+    "@types/jest": "^24.0.6",
+    "@types/react": "^16.8.3",
+    "babel-core": "^7.0.0-bridge",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.14.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.1.0",
+    "jest-dom": "^3.1.2",
+    "prettier": "^1.16.4",
+    "react": "^16.8.2",
+    "react-docgen-typescript-loader": "^3.0.1",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
+    "react-dom": "^16.8.2",
+    "react-testing-library": "^5.9.0",
+    "typescript": "^3.3.3",
+    "typescript-eslint-parser": "^22.0.0"
+  }
+}
