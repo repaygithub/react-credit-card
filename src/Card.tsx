@@ -1,4 +1,5 @@
 import * as React from 'react'
+import cardType from './CardValidation'
 
 type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
@@ -21,7 +22,7 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
             <div className="ReactCreditCard__shiny" />
             <img className="ReactCreditCard__logo" src="" />
             <div className={displayClassName('number')}>{formatNumber(props.number, cardInfo)}</div>
-            <div className ={displayClassName("name")}>{props.name === '' ? props.placeholderName : props.name}</div>
+            <div className ={displayClassName('name')}>{props.name === '' ? props.placeholderName : props.name}</div>
           </div>
         </div>
         <div className="ReactCreditCard__back">
@@ -33,7 +34,23 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
 }
 
 function getCardInfo(number: string, type?: string): { maxLength: number; brand: string } {
-  return { maxLength: 16, brand: 'unknown' }
+  let unknownBrand = { maxLength: 16, brand: 'unknown' }
+
+  if (!number) {
+    return unknownBrand
+  }
+
+  let brand = type || cardType(number)
+
+  if (brand) {
+    if (brand === 'amex') {
+      return {brand, maxLength: 15}
+    } else {
+      return {brand, maxLength: 16}
+    }
+  }
+
+  return unknownBrand
 }
 
 function displayClassName(prop: FOCUS_TYPE, focused?: FOCUS_TYPE): string {
@@ -66,6 +83,7 @@ function formatNumber(number: string, cardInfo: { maxLength: number, brand: stri
   } else {
     const numOfSpaces = Math.ceil(maxLength / 4)
     let i = 1
+
     for (i; i <= numOfSpaces; i++) {
       const spaceIndex = (i * 4 + (i - 1))
       string = string.slice(0, spaceIndex) + ' ' + string.slice(spaceIndex)
