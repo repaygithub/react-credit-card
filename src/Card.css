@@ -144,6 +144,21 @@
   margin-bottom: 30px;
 }
 
+.ReactCreditCard__name{
+  text-transform: uppercase;
+  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  font-size: 20px;
+  max-height: 45px;
+  position: absolute;
+  bottom: 0;
+  width: 190px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: horizontal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2em;
+}
+
 .ReactCreditCard__display{
   color: white;
   font-weight: normal;

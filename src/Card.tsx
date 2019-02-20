@@ -1,9 +1,11 @@
 import * as React from 'react'
 
-type FOCUS_TYPE = 'number' | 'cvc' | 'expiration'
+type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
 interface ReactCreditCardProps {
   number: string
+  name: string
+  placeholderName: string
   type?: string
   focused?: FOCUS_TYPE
 }
@@ -19,6 +21,7 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
             <div className="ReactCreditCard__shiny" />
             <img className="ReactCreditCard__logo" src="" />
             <div className={displayClassName('number')}>{formatNumber(props.number, cardInfo)}</div>
+            <div className ={displayClassName("name")}>{props.name === '' ? props.placeholderName : props.name}</div>
           </div>
         </div>
         <div className="ReactCreditCard__back">
