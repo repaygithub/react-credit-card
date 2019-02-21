@@ -18,7 +18,8 @@ addDecorator(storyFn => (
       justifyContent: 'center',
       alignItems: 'center',
       width: '100vw',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      marginTop: '20px'
     }}
   >
     {storyFn()}

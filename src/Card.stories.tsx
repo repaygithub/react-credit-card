@@ -19,6 +19,7 @@ storiesOf('react-credit-card', module)
       number={text('number', '4111111111111111')}
       name={text('name', 'CS Human')}
       focused={select('focused', focusTypes)}
+      expiration={text('expiration', '01/27')}
       useRadialGradient={boolean('useRadialGradient', false)}
     />
   ))
@@ -28,6 +29,7 @@ storiesOf('react-credit-card', module)
         number={select('built-in brands', exampleBrandNumbers, exampleBrandNumbers.Visa)}
         name={text('name', 'CS Human')}
         focused={select('focused', focusTypes)}
+        expiration={text('expiration', '')}
       />
       <Note>*Note American Express does not flip when CVC is focused like other brands.</Note>
     </>
@@ -36,16 +38,18 @@ storiesOf('react-credit-card', module)
     <ReactCreditCard
       number={text('number', '')}
       name={text('name', '')}
-      placeholderName={text('placeholderName', '')}
+      placeholderName={text('placeholderName', 'Person One')}
       focused={select('focused', focusTypes)}
+      expiration={text('expiration', '')}
     />
   ))
   .add('override brand with type prop', () => (
     <ReactCreditCard
-      number={text('number', '')}
+      number={text('number', '4111111111111111')}
       name={text('name', '')}
       type={select('type', brandTypes, undefined)}
-      focused={select('focused', focusTypes)}
+      focused={select('focused', focusTypes, 'name')}
+      expiration={text('expiration', '01/27')}
     />
   ))
 

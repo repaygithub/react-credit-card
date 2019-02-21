@@ -172,6 +172,40 @@
   line-height: 1.2em;
 }
 
+.ReactCreditCard__expiration{
+  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  letter-spacing: 0em;
+  position: relative;
+  float: right;
+  width: 25%;
+}
+
+.ReactCreditCard__expiration:before {
+  content: attr(data-before);
+  margin-bottom: 2px;
+  font-size: 7px;
+  text-transform: uppercase;
+}
+
+.ReactCreditCard__expiration:after {
+  position: absolute;
+  content: attr(data-after);
+  text-align: right;
+  right: 100%;
+  margin-right: 5px;
+  margin-top: 2px;
+  bottom: 0;
+}
+
+.ReactCreditCard__expiration:before, .ReactCreditCard__expiration:after{
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+  font-size: 7px;
+  white-space: pre;
+  display: block;
+  opacity: 0.5;
+}
+
 .ReactCreditCard__display {
   color: white;
   font-weight: normal;

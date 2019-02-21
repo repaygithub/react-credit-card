@@ -1,11 +1,14 @@
 import * as React from 'react'
-import cardType from './cardValidation'
+import { formatExpiration, formatNumber, getCardInfo } from './helpers'
 
 type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
 interface ReactCreditCardProps {
   number?: string
   name?: string
+  expiration?: string
+  expirationBefore?: string
+  expirationAfter?: string
   placeholderName?: string
   type?: string
   focused?: FOCUS_TYPE
@@ -43,6 +46,13 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
             <div className={displayClassName('name')}>
               {!props.name ? props.placeholderName : props.name}
             </div>
+            <div
+              className={displayClassName('expiration')}
+              data-before={props.expirationBefore}
+              data-after={props.expirationAfter}
+            >
+              {formatExpiration(props.expiration)}
+            </div>
           </div>
         </div>
         <div className="ReactCreditCard__back">
@@ -57,26 +67,6 @@ ReactCreditCard.defaultProps = {
   placeholderName: 'FULL NAME',
 }
 
-function getCardInfo(number: string, type?: string): { maxLength: number; brand: string } {
-  let defaultBrand = { maxLength: 16, brand: type || 'unknown' }
-
-  if (!number) {
-    return defaultBrand
-  }
-
-  let brand = type || cardType(number)
-
-  if (brand) {
-    if (brand === 'amex') {
-      return { brand, maxLength: 15 }
-    } else {
-      return { brand, maxLength: 16 }
-    }
-  }
-
-  return defaultBrand
-}
-
 function displayClassName(prop: FOCUS_TYPE, focused?: FOCUS_TYPE): string {
   let className = `ReactCreditCard__${prop} ReactCreditCard__display`
 
@@ -85,41 +75,6 @@ function displayClassName(prop: FOCUS_TYPE, focused?: FOCUS_TYPE): string {
   }
 
   return className
-}
-
-function formatNumber(number: string, cardInfo: { maxLength: number; brand: string }): string {
-  let string = !number ? '' : number
-  const maxLength = cardInfo.maxLength
-
-  if (string.length < maxLength) {
-    string = string.slice(0, maxLength)
-  }
-
-  while (string.length < maxLength) {
-    string += '•'
-  }
-
-  if (cardInfo.brand === 'amex') {
-    const spaceIndex1 = 4
-    const spaceIndex2 = 10
-
-    string =
-      string.substring(0, spaceIndex1) +
-      ' ' +
-      string.substring(spaceIndex1, spaceIndex2) +
-      ' ' +
-      string.substring(spaceIndex2)
-  } else {
-    const numOfSpaces = Math.ceil(maxLength / 4)
-    let i = 1
-
-    for (i; i <= numOfSpaces; i++) {
-      const spaceIndex = i * 4 + (i - 1)
-      string = string.slice(0, spaceIndex) + ' ' + string.slice(spaceIndex)
-    }
-  }
-
-  return string
 }
 
 export default ReactCreditCard

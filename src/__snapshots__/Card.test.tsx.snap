@@ -31,6 +31,11 @@ exports[`React Credit Card should match amex snapshot 1`] = `
           >
             FULL NAME
           </div>
+          <div
+            class="ReactCreditCard__expiration ReactCreditCard__display"
+          >
+            ••/••
+          </div>
         </div>
       </div>
       <div
@@ -75,6 +80,11 @@ exports[`React Credit Card should match snapshot 1`] = `
             class="ReactCreditCard__name ReactCreditCard__display"
           >
             FULL NAME
+          </div>
+          <div
+            class="ReactCreditCard__expiration ReactCreditCard__display"
+          >
+            ••/••
           </div>
         </div>
       </div>
