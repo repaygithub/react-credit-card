@@ -60,4 +60,14 @@ function formatExpiration(expiration?: string): string {
   }
 }
 
-export { formatExpiration, formatNumber, getCardInfo }
+function formatCvc(cvc: string | undefined, cvcLength: number) {
+  if (!cvc) {
+    cvc = ''
+  }
+  while (cvc.length < cvcLength) {
+    cvc += '•'
+  }
+  return cvc
+}
+
+export { formatCvc, formatExpiration, formatNumber, getCardInfo }

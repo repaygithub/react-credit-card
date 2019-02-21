@@ -5,7 +5,7 @@ import ReactCreditCard from './Card'
 import '../src/Card.css'
 
 const focusTypes = ['number', 'cvc', 'expiration', 'name']
-const brandTypes = ['amex', 'mastercard', 'visa', 'discover']
+const brandTypes = ['amex', 'mastercard', 'visa', 'discover', 'unknown']
 const exampleBrandNumbers = {
   Visa: '4111111111111111',
   'American Express': '378282246310005',
@@ -20,7 +20,9 @@ storiesOf('react-credit-card', module)
       name={text('name', 'CS Human')}
       focused={select('focused', focusTypes)}
       expiration={text('expiration', '01/27')}
-      useRadialGradient={boolean('useRadialGradient', false)}
+      cvc={text('cvc', '')}
+      hasRadialGradient={boolean('useRadialGradient', false)}
+      hasShadow={boolean('hasShadow', false)}
     />
   ))
   .add('view built-in card brands', () => (

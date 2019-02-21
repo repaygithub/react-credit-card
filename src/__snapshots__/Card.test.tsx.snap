@@ -17,6 +17,11 @@ exports[`React Credit Card should match amex snapshot 1`] = `
           <div
             class="ReactCreditCard__shiny"
           />
+          <div
+            class="ReactCreditCard__cvc ReactCreditCard__display"
+          >
+            ••••
+          </div>
           <img
             class="ReactCreditCard__logo"
             src=""
@@ -33,6 +38,8 @@ exports[`React Credit Card should match amex snapshot 1`] = `
           </div>
           <div
             class="ReactCreditCard__expiration ReactCreditCard__display"
+            data-after="valid thru"
+            data-before="month/year"
           >
             ••/••
           </div>
@@ -83,6 +90,8 @@ exports[`React Credit Card should match snapshot 1`] = `
           </div>
           <div
             class="ReactCreditCard__expiration ReactCreditCard__display"
+            data-after="valid thru"
+            data-before="month/year"
           >
             ••/••
           </div>
@@ -94,6 +103,11 @@ exports[`React Credit Card should match snapshot 1`] = `
         <div
           class="ReactCreditCard__bar"
         />
+        <div
+          class="ReactCreditCard__cvc ReactCreditCard__display"
+        >
+          •••
+        </div>
       </div>
     </div>
   </div>

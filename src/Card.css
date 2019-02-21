@@ -19,6 +19,9 @@
   transform-style: preserve-3d;
   -webkit-transition: all 400ms linear;
   transition: all 400ms linear;
+}
+
+.ReactCreditCard--shadow {
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
@@ -172,7 +175,7 @@
   line-height: 1.2em;
 }
 
-.ReactCreditCard__expiration{
+.ReactCreditCard__expiration {
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   letter-spacing: 0em;
   position: relative;
@@ -206,12 +209,35 @@
   opacity: 0.5;
 }
 
+.ReactCreditCard__cvc {
+  position: absolute;
+  -webkit-transition-delay: 600ms;
+  transition-delay: 600ms;
+  font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+  font-size: 14px;
+}
+
+.ReactCreditCard__back .ReactCreditCard__cvc {
+  top: 40%;
+  left: 85%;
+}
+
+.ReactCreditCard__front .ReactCreditCard__cvc {
+  top: 19%;
+  right: 18%;
+}
+
 .ReactCreditCard__display {
   color: white;
   font-weight: normal;
   opacity: 0.5;
   -webkit-transition: opacity 400ms linear;
   transition: opacity 400ms linear;
+}
+
+.ReactCreditCard--focused {
+  opacity: 1;
+  font-weight: 700;
 }
 
 .ReactCreditCard .ReactCreditCard__front:before,

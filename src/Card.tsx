@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { formatExpiration, formatNumber, getCardInfo } from './helpers'
+import { formatCvc, formatExpiration, formatNumber, getCardInfo } from './helpers'
 
 type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
@@ -9,10 +9,12 @@ interface ReactCreditCardProps {
   expiration?: string
   expirationBefore?: string
   expirationAfter?: string
+  cvc?: string
   placeholderName?: string
   type?: string
   focused?: FOCUS_TYPE
-  useRadialGradient?: boolean
+  hasRadialGradient?: boolean
+  hasShadow?: boolean
 }
 
 const classnames = (...args) =>
@@ -27,13 +29,15 @@ const classnames = (...args) =>
 
 const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
   let cardInfo = getCardInfo(props.number, props.type)
-  let isFlipped = props.focused === 'cvc' && cardInfo.brand !== 'amex'
+  let isAmex = cardInfo.brand === 'amex'
+  let isFlipped = props.focused === 'cvc' && !isAmex
   const topClassName = classnames(
     'ReactCreditCard',
     isFlipped && 'ReactCreditCard--flipped',
     `ReactCreditCard--${cardInfo.brand}`,
     cardInfo.brand !== 'unknown' && 'ReactCreditCard--identified',
-    props.useRadialGradient && 'ReactCreditCard--radial'
+    props.hasShadow && 'ReactCreditCard--shadow',
+    props.hasRadialGradient && 'ReactCreditCard--radial'
   )
   return (
     <div className="ReactCreditCard__container">
@@ -41,13 +45,20 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
         <div className="ReactCreditCard__front">
           <div className="ReactCreditCard__lower">
             <div className="ReactCreditCard__shiny" />
+            {isAmex && (
+              <div className={displayClassName('cvc', props.focused)}>
+                {formatCvc(props.cvc, cardInfo.cvcLength)}
+              </div>
+            )}
             <img className="ReactCreditCard__logo" src="" />
-            <div className={displayClassName('number')}>{formatNumber(props.number, cardInfo)}</div>
-            <div className={displayClassName('name')}>
+            <div className={displayClassName('number', props.focused)}>
+              {formatNumber(props.number, cardInfo)}
+            </div>
+            <div className={displayClassName('name', props.focused)}>
               {!props.name ? props.placeholderName : props.name}
             </div>
             <div
-              className={displayClassName('expiration')}
+              className={displayClassName('expiration', props.focused)}
               data-before={props.expirationBefore}
               data-after={props.expirationAfter}
             >
@@ -57,6 +68,11 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
         </div>
         <div className="ReactCreditCard__back">
           <div className="ReactCreditCard__bar" />
+          {!isAmex && (
+            <div className={displayClassName('cvc', props.focused)}>
+              {formatCvc(props.cvc, cardInfo.cvcLength)}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -65,9 +81,11 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
 
 ReactCreditCard.defaultProps = {
   placeholderName: 'FULL NAME',
+  expirationBefore: 'month/year',
+  expirationAfter: 'valid thru',
 }
 
-function displayClassName(prop: FOCUS_TYPE, focused?: FOCUS_TYPE): string {
+function displayClassName(prop: FOCUS_TYPE, focused: FOCUS_TYPE | undefined): string {
   let className = `ReactCreditCard__${prop} ReactCreditCard__display`
 
   if (focused === prop) {

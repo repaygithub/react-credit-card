@@ -15,6 +15,16 @@ describe('React Credit Card', () => {
     expect(creditCard.asFragment()).toMatchSnapshot()
   })
 
+  test('adds radial pattern when hasRadialGradient = true', () => {
+    const creditCard = render(<ReactCreditCard number="340000000000009" hasRadialGradient />)
+    expect(creditCard.container.firstChild.firstChild).toHaveClass('ReactCreditCard--radial')
+  })
+
+  test('adds shadow when hasShadow = true', () => {
+    const creditCard = render(<ReactCreditCard number="340000000000009" hasShadow />)
+    expect(creditCard.container.firstChild.firstChild).toHaveClass('ReactCreditCard--shadow')
+  })
+
   test('should render number', () => {
     const creditCard = render(<ReactCreditCard number="5105105105105100" />)
     expect(creditCard.getByText('5105 1051 0510 5100')).not.toBeNull()
@@ -41,14 +51,76 @@ describe('React Credit Card', () => {
     expect(creditCard.getByText('Eddard Stark')).not.toBeNull()
   })
 
-  test('should display expiration or placeholders', () => {
-    let creditCard = render(<ReactCreditCard expiration="" />)
-    expect(creditCard.getByText('••/••')).not.toBeNull()
-    creditCard.rerender(<ReactCreditCard expiration="0" />)
-    expect(creditCard.getByText('0•/••')).not.toBeNull()
-    creditCard.rerender(<ReactCreditCard expiration="01/19" />)
-    expect(creditCard.getByText('01/19')).not.toBeNull()
-    creditCard.rerender(<ReactCreditCard expiration="01/2019" />)
-    expect(creditCard.getByText('01/2019')).not.toBeNull()
+  describe('expiration prop', () => {
+    test('should display placeholders when not provided', () => {
+      let creditCard = render(<ReactCreditCard expiration="" />)
+      expect(creditCard.getByText('••/••')).not.toBeNull()
+    })
+
+    test('should render when provided', () => {
+      let creditCard = render(<ReactCreditCard expiration="0" />)
+      expect(creditCard.getByText('0•/••')).not.toBeNull()
+      creditCard.rerender(<ReactCreditCard expiration="01/19" />)
+      expect(creditCard.getByText('01/19')).not.toBeNull()
+      creditCard.rerender(<ReactCreditCard expiration="01/2019" />)
+      expect(creditCard.getByText('01/2019')).not.toBeNull()
+    })
+  })
+
+  test('renders expirationBefore default', () => {
+    let creditCard = render(<ReactCreditCard expiration="0" />)
+    let expirationNode = creditCard.asFragment().querySelector('.ReactCreditCard__expiration')
+    expect(expirationNode.getAttribute('data-before')).toEqual('month/year')
+  })
+
+  test('renders expirationAfter default', () => {
+    let creditCard = render(<ReactCreditCard expiration="0" />)
+    let expirationNode = creditCard.asFragment().querySelector('.ReactCreditCard__expiration')
+    expect(expirationNode.getAttribute('data-after')).toEqual('valid thru')
+  })
+
+  describe('cvc prop', () => {
+    describe('when brand is not amex', () => {
+      test('placeholders on the back when not provided', () => {
+        let creditCard = render(<ReactCreditCard number="5105105105105100" />)
+        let fragment = creditCard.asFragment()
+        expect(fragment.querySelector('.ReactCreditCard__back')).toHaveTextContent('•••')
+      })
+
+      test('placeholders on the back to fill partial cvc', () => {
+        let creditCard = render(<ReactCreditCard number="5105105105105100" cvc="12" />)
+        let fragment = creditCard.asFragment()
+        expect(fragment.querySelector('.ReactCreditCard__back')).toHaveTextContent('12•')
+      })
+
+      test('is displayed on the back', () => {
+        let creditCard = render(<ReactCreditCard number="5105105105105100" cvc="123" />)
+        let fragment = creditCard.asFragment()
+        expect(fragment.querySelector('.ReactCreditCard__back')).toHaveTextContent('123')
+      })
+    })
+
+    describe('when brand is amex', () => {
+      test('placeholders on the front when not provided', () => {
+        let creditCard = render(<ReactCreditCard number="340000000000009" />)
+        let fragment = creditCard.asFragment()
+        expect(fragment.querySelector('.ReactCreditCard__front')).toHaveTextContent('••••')
+      })
+
+      test('is displayed on the front', () => {
+        let creditCard = render(<ReactCreditCard number="340000000000009" cvc="1234" />)
+        let fragment = creditCard.asFragment()
+        expect(fragment.querySelector('.ReactCreditCard__front')).toHaveTextContent('1234')
+      })
+    })
+  })
+
+  test('should display cvc or placeholders', () => {
+    let creditCard = render(<ReactCreditCard number="5105105105105100" />)
+    expect(creditCard.getByText('•••')).not.toBeNull()
+    creditCard.rerender(<ReactCreditCard number="5105105105105100" cvc="12" />)
+    expect(creditCard.getByText('12•')).not.toBeNull()
+    let fragment = creditCard.asFragment()
+    expect(fragment.querySelector('.ReactCreditCard__back')).toHaveTextContent('12•')
   })
 })
