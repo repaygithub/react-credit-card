@@ -1,29 +1,47 @@
 import * as React from 'react'
-import cardType from './CardValidation'
+import cardType from './cardValidation'
 
 type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
 interface ReactCreditCardProps {
-  number: string
-  name: string
-  placeholderName: string
+  number?: string
+  name?: string
+  placeholderName?: string
   type?: string
   focused?: FOCUS_TYPE
+  useRadialGradient?: boolean
 }
+
+const classnames = (...args) =>
+  args
+    .reduce((memo, arg) => {
+      if (typeof arg === 'string') {
+        memo += ' ' + arg
+      }
+      return memo
+    }, '')
+    .trim()
 
 const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
   let cardInfo = getCardInfo(props.number, props.type)
   let isFlipped = props.focused === 'cvc' && cardInfo.brand !== 'amex'
+  const topClassName = classnames(
+    'ReactCreditCard',
+    isFlipped && 'ReactCreditCard--flipped',
+    `ReactCreditCard--${cardInfo.brand}`,
+    cardInfo.brand !== 'unknown' && 'ReactCreditCard--identified',
+    props.useRadialGradient && 'ReactCreditCard--radial'
+  )
   return (
     <div className="ReactCreditCard__container">
-      <div className={`ReactCreditCard ${isFlipped ? 'ReactCreditCard--flipped' : ''}`}>
+      <div className={topClassName}>
         <div className="ReactCreditCard__front">
           <div className="ReactCreditCard__lower">
             <div className="ReactCreditCard__shiny" />
             <img className="ReactCreditCard__logo" src="" />
             <div className={displayClassName('number')}>{formatNumber(props.number, cardInfo)}</div>
             <div className={displayClassName('name')}>
-              {props.name === '' ? props.placeholderName : props.name}
+              {!props.name ? props.placeholderName : props.name}
             </div>
           </div>
         </div>
@@ -35,11 +53,15 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
   )
 }
 
+ReactCreditCard.defaultProps = {
+  placeholderName: 'FULL NAME',
+}
+
 function getCardInfo(number: string, type?: string): { maxLength: number; brand: string } {
-  let unknownBrand = { maxLength: 16, brand: 'unknown' }
+  let defaultBrand = { maxLength: 16, brand: type || 'unknown' }
 
   if (!number) {
-    return unknownBrand
+    return defaultBrand
   }
 
   let brand = type || cardType(number)
@@ -52,7 +74,7 @@ function getCardInfo(number: string, type?: string): { maxLength: number; brand:
     }
   }
 
-  return unknownBrand
+  return defaultBrand
 }
 
 function displayClassName(prop: FOCUS_TYPE, focused?: FOCUS_TYPE): string {

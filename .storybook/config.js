@@ -13,10 +13,12 @@ addDecorator(withKnobs)
 addDecorator(storyFn => (
   <div
     style={{
+      fontFamily: 'Helvetica, sans serif',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       width: '100vw',
+      flexDirection: 'column'
     }}
   >
     {storyFn()}
@@ -24,7 +26,7 @@ addDecorator(storyFn => (
 ))
 
 function loadStories() {
-  require('./stories.tsx')
+  require('../src/Card.stories.tsx')
 }
 
 configure(loadStories, module)

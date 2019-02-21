@@ -2,7 +2,7 @@
   position: relative;
   -webkit-perspective: 1000px;
   perspective: 1000px;
-  width:  350px;
+  width: 350px;
   height: 200px;
 }
 
@@ -29,7 +29,7 @@
   transform: rotateY(180deg);
 }
 
-.ReactCreditCard--focused{
+.ReactCreditCard--focused {
   opacity: 1;
   font-weight: 700;
 }
@@ -51,23 +51,30 @@
   left: 0;
   overflow: hidden;
   border-radius: 10px;
-  background: #DDDDDD;
+  background: #777777;
   z-index: 0;
 }
 
-.ReactCreditCard__back{
+.ReactCreditCard__back {
   -webkit-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
-.ReactCreditCard__back:before{
-  content: " ";
+/* Signature Strip*/
+.ReactCreditCard__back::after {
+  content: "";
   display: block;
-  background-color: #FFF;
-  background-image: -webkit-linear-gradient(#FFF, #FFF);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#FFF));
-  background-image: linear-gradient(#FFF, #FFF);
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(#fff, #fff);
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fff),
+    to(#fff)
+  );
+  background-image: linear-gradient(#fff, #fff);
   width: 80%;
   height: 16%;
   position: absolute;
@@ -75,18 +82,18 @@
   left: 2%;
 }
 
-.ReactCreditCard__back .ReactCreditCard__shiny{
+.ReactCreditCard__back .ReactCreditCard__shiny {
   position: absolute;
   top: 66%;
   left: 2%;
 }
 
-.ReactCreditCard__shiny{
+.ReactCreditCard__shiny {
   width: 50px;
   height: 35px;
   margin-bottom: 10px;
   border-radius: 5px;
-  background: #CCC;
+  background: #ccc;
   position: relative;
 }
 
@@ -101,7 +108,7 @@
   opacity: 0.5;
 }
 
-.ReactCreditCard__shiny:before{
+.ReactCreditCard__shiny:before {
   content: " ";
   display: block;
   width: 70%;
@@ -113,23 +120,29 @@
   top: 20%;
 }
 
-.ReactCreditCard__lower{
+.ReactCreditCard__lower {
   width: 80%;
   position: absolute;
   left: 10%;
   bottom: 30px;
 }
 
-.ReactCreditCard__logo{
+.ReactCreditCard__logo {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.ReactCreditCard__bar{
+.ReactCreditCard__bar {
   background-color: #444;
   background-image: -webkit-linear-gradient(#444, #333);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#444), to(#333));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#444),
+    to(#333)
+  );
   background-image: linear-gradient(#444, #333);
   width: 100%;
   height: 20%;
@@ -137,14 +150,14 @@
   top: 10%;
 }
 
-.ReactCreditCard__number{
+.ReactCreditCard__number {
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   font-size: 24px;
   clear: both;
   margin-bottom: 30px;
 }
 
-.ReactCreditCard__name{
+.ReactCreditCard__name {
   text-transform: uppercase;
   font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
   font-size: 20px;
@@ -159,10 +172,269 @@
   line-height: 1.2em;
 }
 
-.ReactCreditCard__display{
+.ReactCreditCard__display {
   color: white;
   font-weight: normal;
   opacity: 0.5;
   -webkit-transition: opacity 400ms linear;
   transition: opacity 400ms linear;
+}
+
+.ReactCreditCard .ReactCreditCard__front:before,
+.ReactCreditCard .ReactCreditCard__back:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border-radius: 10px;
+  -webkit-transition: all 400ms ease;
+  -moz-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+.ReactCreditCard:not(.ReactCreditCard--radial) .ReactCreditCard__front:before,
+.ReactCreditCard:not(.ReactCreditCard--radial) .ReactCreditCard__back:before {
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 1px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      210deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    -webkit-linear-gradient(-245deg, rgba(255, 255, 255, 0) 50%, rgba(
+            255,
+            255,
+            255,
+            0.4
+          )
+          70%, rgba(255, 255, 255, 0) 90%);
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 1px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      210deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    linear-gradient(
+      -25deg,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 70%,
+      rgba(255, 255, 255, 0) 90%
+    );
+}
+
+.ReactCreditCard.ReactCreditCard--radial .ReactCreditCard__front:before,
+.ReactCreditCard.ReactCreditCard--radial .ReactCreditCard__back:before {
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 1px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      210deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 90% 20%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 15% 80%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    -webkit-linear-gradient(-245deg, rgba(255, 255, 255, 0) 50%, rgba(
+            255,
+            255,
+            255,
+            0.4
+          )
+          70%, rgba(255, 255, 255, 0) 90%);
+  background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 1px,
+      rgba(255, 255, 255, 0) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+      210deg,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 90% 20%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    repeating-radial-gradient(
+      circle at 15% 80%,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.04) 3px,
+      rgba(255, 255, 255, 0.05) 4px
+    ),
+    linear-gradient(
+      -25deg,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 70%,
+      rgba(255, 255, 255, 0) 90%
+    );
+}
+
+.ReactCreditCard--identified .ReactCreditCard__front:before,
+.ReactCreditCard--identified .ReactCreditCard__back:before {
+  opacity: 0.7;
+}
+
+/* Card Brand Styles */
+
+.ReactCreditCard--unknown {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ReactCreditCard--unknown .ReactCreditCard__logo {
+  visibility: hidden;
+}
+
+.ReactCreditCard--dankort .ReactCreditCard__front,
+.ReactCreditCard--dankort .ReactCreditCard__back {
+  background: #0055c7;
+}
+
+.ReactCreditCard--discover .ReactCreditCard__front,
+.ReactCreditCard--discover .ReactCreditCard__back {
+  background: #86b8cf;
+}
+
+.ReactCreditCard--mastercard .ReactCreditCard__front,
+.ReactCreditCard--mastercard .ReactCreditCard__back {
+  background: #0061a8;
+}
+
+.ReactCreditCard--visa .ReactCreditCard__front,
+.ReactCreditCard--visa .ReactCreditCard__back {
+  background: #191278;
+}
+
+.ReactCreditCard--amex .ReactCreditCard__front,
+.ReactCreditCard--amex .ReactCreditCard__back {
+  background-color: #108168;
 }

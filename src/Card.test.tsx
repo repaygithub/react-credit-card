@@ -38,7 +38,9 @@ describe('React Credit Card', () => {
   test('should update name', () => {
     let creditCard = render(<ReactCreditCard number="" name="" placeholderName="FULL NAME" />)
     expect(creditCard.getByText('FULL NAME')).not.toBeNull()
-    creditCard = render(<ReactCreditCard number="" name="Eddard Stark" placeholderName="FULL NAME" />)
+    creditCard = render(
+      <ReactCreditCard number="" name="Eddard Stark" placeholderName="FULL NAME" />
+    )
     expect(creditCard.getByText('Eddard Stark')).not.toBeNull()
   })
 })
