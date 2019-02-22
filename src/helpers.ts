@@ -48,10 +48,6 @@ function formatExpiration(expiration?: string): string {
     expiration = expiration.toString().replace(/\D/g, '')
     let expirationMaxLength = 6
 
-    if (expiration === '') {
-      return '••/••'
-    }
-
     while (expiration.length < 4) {
       expiration += '•'
     }

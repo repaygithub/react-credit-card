@@ -15,6 +15,20 @@ describe('React Credit Card', () => {
     expect(creditCard.asFragment()).toMatchSnapshot()
   })
 
+  describe('type prop', () => {
+    test('type prop should override number', () => {
+      const creditCard = render(<ReactCreditCard number="340000000000009" type="visa" />)
+      let fragment = creditCard.asFragment()
+      expect(fragment.querySelector('.ReactCreditCard--visa')).not.toBeNull()
+    })
+
+    test('should handle unknown type', () => {
+      const creditCard = render(<ReactCreditCard number="340000000000009" type="bazoooooka" />)
+      let fragment = creditCard.asFragment()
+      expect(fragment.querySelector('.ReactCreditCard--unknown')).not.toBeNull()
+    })
+  })
+
   test('adds radial pattern when hasRadialGradient = true', () => {
     const creditCard = render(<ReactCreditCard number="340000000000009" hasRadialGradient />)
     expect(creditCard.container.firstChild.firstChild).toHaveClass('ReactCreditCard--radial')
@@ -25,9 +39,21 @@ describe('React Credit Card', () => {
     expect(creditCard.container.firstChild.firstChild).toHaveClass('ReactCreditCard--shadow')
   })
 
-  test('should render number', () => {
-    const creditCard = render(<ReactCreditCard number="5105105105105100" />)
-    expect(creditCard.getByText('5105 1051 0510 5100')).not.toBeNull()
+  describe('number prop', () => {
+    test('should render formatted number', () => {
+      const creditCard = render(<ReactCreditCard number="5105105105105100" />)
+      expect(creditCard.getByText('5105 1051 0510 5100')).not.toBeNull()
+    })
+
+    test('should fill to minimum number length', () => {
+      const creditCard = render(<ReactCreditCard number="5105105105105" />)
+      expect(creditCard.getByText('5105 1051 0510 5•••')).not.toBeNull()
+    })
+
+    test('should limit number to max length', () => {
+      const creditCard = render(<ReactCreditCard number="60110000000000000000000" />)
+      expect(creditCard.getByText('6011 0000 0000 0000 000')).not.toBeNull()
+    })
   })
 
   test('should show back when focused = cvc', () => {
@@ -54,6 +80,11 @@ describe('React Credit Card', () => {
   describe('expiration prop', () => {
     test('should display placeholders when not provided', () => {
       let creditCard = render(<ReactCreditCard expiration="" />)
+      expect(creditCard.getByText('••/••')).not.toBeNull()
+    })
+
+    test('should handle invalid expiration input', () => {
+      let creditCard = render(<ReactCreditCard expiration="//" />)
       expect(creditCard.getByText('••/••')).not.toBeNull()
     })
 

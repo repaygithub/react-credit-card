@@ -67,11 +67,3 @@ export function cardFromNumber(number: string): CardInfo {
   })
   return card || unknownCardInfo
 }
-
-export default function cardType(number: string): CardInfo | null {
-  if (!number) {
-    return null
-  }
-  let cardObj = cardFromNumber(number)
-  return cardObj ? cardObj : null
-}
