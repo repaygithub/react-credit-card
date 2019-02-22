@@ -28,13 +28,15 @@ const ARGS = process.argv
 
   // run as tests or write
   if (ARGS.includes('--test')) {
-    const documentedCoverage = fs.readFile(path.join(cwd, 'Coverage.md'), 'utf8')
+    const documentedCoverage = await fs.readFile(path.join(cwd, 'Coverage.md'), 'utf8')
     if (documentedCoverage !== markdown) {
       console.error('[ERR] current coverage does not match documented coverage')
       console.error(
         '\n\tRun `yarn test` locally to update documented coverage and commit changes.\n'
       )
       process.exit(1)
+    } else {
+      console.log('\n[SUCCESS] documented coverage matches current test coverage.\n')
     }
   } else {
     await Promise.all([
