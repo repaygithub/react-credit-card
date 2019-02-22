@@ -2,13 +2,19 @@
   "name": "@repay/react-credit-card",
   "version": "0.0.1",
   "description": "Credit card display in React",
-  "main": "src/index.ts",
+  "main": "dist/card.cjs.js",
+  "module": "dist/card.esm.js",
   "engines": {
     "node": ">=10",
     "yarn": "~1.13.0"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "clean": "rm -r coverage dist",
     "dev": "start-storybook -p 9001 -c .storybook",
+    "build": "rollup -c rollup.config.js",
     "build:dev": "build-storybook -c .storybook -o gh-pages",
     "publish:dev": "echo TODO # gh-pages -d gh-pages",
     "lint": "eslint \"{src,.storybook,tests,scripts}/**/*.{ts,tsx,mjs,js,jsx}\"",
@@ -74,7 +80,17 @@
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.8.2",
     "react-testing-library": "^5.9.0",
+    "rollup": "^1.2.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "typescript": "^3.3.3",
     "typescript-eslint-parser": "^22.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
   }
 }
