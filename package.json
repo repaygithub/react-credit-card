@@ -5,7 +5,12 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "start-storybook -p 9001 -c .storybook",
-    "tdd": "yarn jest --watch"
+    "build:dev": "build-storybook -c .storybook -o gh-pages",
+    "publish:dev": "echo TODO # gh-pages -d gh-pages",
+    "lint": "eslint \"{src,.storybook,tests}/**/*.{ts,tsx,js,jsx}\"",
+    "tdd": "yarn jest --watch",
+    "test": "yarn lint && yarn jest",
+    "test:ci": "yarn lint && yarn jest --coverage"
   },
   "repository": "https://github.com/repaygithub/react-credit-card",
   "contributors": [
@@ -14,7 +19,9 @@
   ],
   "license": "MIT",
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>/tests/setup.ts"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.ts"
+    ],
     "transform": {
       "^.+\\.(t|j)sx?$": "babel-jest"
     },
