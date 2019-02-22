@@ -1,5 +1,8 @@
 # `@repay/react-credit-card`
 
+[![Coverage 100%](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg)](./Coverage.md)
+[![CircleCI](https://circleci.com/gh/repaygithub/react-credit-card/tree/master.svg?style=svg)](https://circleci.com/gh/repaygithub/react-credit-card/tree/master)
+
 A port of Card by @jessepollak and re-write of `react-credit-card` by @JohnyDays
 
 [View the demo]() // TODO publish to gh-pages
@@ -13,4 +16,5 @@ A port of Card by @jessepollak and re-write of `react-credit-card` by @JohnyDays
 ## General Commands
 
 - `yarn tdd`: Runs the test suite in watch mode, which will trigger tests to re-run when changes are made.
-- `yarn test`: runs the full test suite and linter
+- `yarn test`: runs the full test suite, TypeScript checks, and validates formatting; then documents current coverage
+- `yarn fmt`: tries to automatically fixes formatting or errors to fix others

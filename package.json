@@ -3,14 +3,23 @@
   "version": "0.0.1",
   "description": "Credit card display in React",
   "main": "src/index.ts",
+  "engines": {
+    "node": ">=10",
+    "yarn": "~1.13.0"
+  },
   "scripts": {
     "dev": "start-storybook -p 9001 -c .storybook",
     "build:dev": "build-storybook -c .storybook -o gh-pages",
     "publish:dev": "echo TODO # gh-pages -d gh-pages",
-    "lint": "eslint \"{src,.storybook,tests}/**/*.{ts,tsx,js,jsx}\"",
+    "lint": "eslint \"{src,.storybook,tests,scripts}/**/*.{ts,tsx,mjs,js,jsx}\"",
+    "fmt": "yarn lint --fix",
     "tdd": "yarn jest --watch",
-    "test": "yarn lint && yarn jest",
-    "test:ci": "yarn lint && yarn jest --coverage"
+    "test:base": "yarn lint && yarn test:types && yarn jest --coverage",
+    "test": "yarn test:base",
+    "posttest": "node --experimental-modules scripts/save-coverage",
+    "test:types": "tsc --project tsconfig.json --noEmit",
+    "test:ci": "yarn test:base",
+    "posttest:ci": "yarn posttest --test"
   },
   "repository": "https://github.com/repaygithub/react-credit-card",
   "contributors": [
@@ -25,7 +34,12 @@
     "transform": {
       "^.+\\.(t|j)sx?$": "babel-jest"
     },
-    "testRegex": "src/.*\\.test\\.(jsx?|tsx?)$"
+    "testRegex": "src/.*\\.test\\.(jsx?|tsx?)$",
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "json-summary"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",

@@ -4,7 +4,6 @@ jobs:
     docker:
       - image: circleci/node:lts
     steps:
-
       - checkout
 
       - run:
