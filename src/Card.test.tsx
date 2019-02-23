@@ -107,7 +107,7 @@ describe('React Credit Card', () => {
   test('renders expirationAfter default', () => {
     let creditCard = render(<ReactCreditCard expiration="0" />)
     let expirationNode = creditCard.asFragment().querySelector('.ReactCreditCard__expiration')
-    expect(expirationNode.getAttribute('data-after')).toEqual('valid thru')
+    expect(expirationNode.getAttribute('data-after')).toEqual('valid\nthru')
   })
 
   describe('cvc prop', () => {

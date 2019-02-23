@@ -24,7 +24,7 @@ exports[`React Credit Card should match amex snapshot 1`] = `
           </div>
           <img
             class="ReactCreditCard__logo"
-            src=""
+            src="data:image/gif;base64,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"
           />
           <div
             class="ReactCreditCard__number ReactCreditCard__display"
@@ -38,7 +38,8 @@ exports[`React Credit Card should match amex snapshot 1`] = `
           </div>
           <div
             class="ReactCreditCard__expiration ReactCreditCard__display"
-            data-after="valid thru"
+            data-after="valid
+thru"
             data-before="month/year"
           >
             ••/••
@@ -76,7 +77,6 @@ exports[`React Credit Card should match snapshot 1`] = `
           />
           <img
             class="ReactCreditCard__logo"
-            src=""
           />
           <div
             class="ReactCreditCard__number ReactCreditCard__display"
@@ -90,7 +90,8 @@ exports[`React Credit Card should match snapshot 1`] = `
           </div>
           <div
             class="ReactCreditCard__expiration ReactCreditCard__display"
-            data-after="valid thru"
+            data-after="valid
+thru"
             data-before="month/year"
           >
             ••/••
