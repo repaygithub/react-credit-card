@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "react"
-  }
+    "jsx": "react",
+    "declaration": true,
+    "module": "amd",
+    "outFile": "dist/react-credit-card.d.ts",
+    "skipLibCheck": true
+  },
+  "include": ["src/Card.tsx"],
+  "exclude": ["node_modules"]
 }

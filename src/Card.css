@@ -1,9 +1,10 @@
 .ReactCreditCard__container {
   position: relative;
-  -webkit-perspective: 1000px;
   perspective: 1000px;
   width: 350px;
   height: 200px;
+  font-size: 16px;
+  text-align: left;
 }
 
 .ReactCreditCard {

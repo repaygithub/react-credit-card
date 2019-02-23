@@ -1,9 +1,10 @@
 {
   "name": "@repay/react-credit-card",
-  "version": "0.0.1",
+  "version": "1.0.0-beta",
   "description": "Credit card display in React",
-  "main": "dist/card.cjs.js",
-  "module": "dist/card.esm.js",
+  "main": "dist/react-credit-card.cjs.js",
+  "module": "dist/react-credit-card.esm.js",
+  "typings": "dist/react-credit-card.d.ts",
   "engines": {
     "node": ">=10",
     "yarn": "~1.13.0"
@@ -14,7 +15,10 @@
   "scripts": {
     "clean": "rm -r coverage dist",
     "dev": "start-storybook -p 9001 -c .storybook",
-    "build": "rollup -c rollup.config.js",
+    "build": "yarn build:js && yarn build:css",
+    "build:js": "rollup -c rollup.config.js",
+    "build:types": "tsc --project tsconfig.json --emitDeclarationOnly",
+    "build:css": "postcss --map --use autoprefixer -o dist/react-credit-card.css src/Card.css",
     "build:dev": "build-storybook -c .storybook -o gh-pages",
     "publish:dev": "echo TODO # gh-pages -d gh-pages",
     "lint": "eslint \"{src,.storybook,tests,scripts}/**/*.{ts,tsx,mjs,js,jsx}\"",
@@ -63,6 +67,7 @@
     "@storybook/react": "^4.1.12",
     "@types/jest": "^24.0.6",
     "@types/react": "^16.8.3",
+    "autoprefixer": "^9.4.8",
     "babel-core": "^7.0.0-bridge",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
@@ -74,6 +79,7 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.1.0",
     "jest-dom": "^3.1.2",
+    "postcss-cli": "^6.1.2",
     "prettier": "^1.16.4",
     "react": "^16.8.2",
     "react-docgen-typescript-loader": "^3.0.1",
