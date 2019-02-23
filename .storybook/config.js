@@ -10,7 +10,7 @@ setOptions({
 })
 // addDecorator(withInfo())
 addDecorator(withKnobs)
-addDecorator(storyFn => (
+addDecorator(Story => (
   <div
     style={{
       fontFamily: 'Helvetica, sans serif',
@@ -22,7 +22,7 @@ addDecorator(storyFn => (
       marginTop: '20px'
     }}
   >
-    {storyFn()}
+    <Story />
   </div>
 ))
 
