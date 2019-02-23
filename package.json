@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rm -r coverage dist",
     "dev": "start-storybook -p 9001 -c .storybook",
-    "build": "yarn build:js && yarn build:css",
+    "build": "yarn build:js && yarn build:css && yarn build:types",
     "build:js": "rollup -c rollup.config.js",
     "build:types": "tsc --project tsconfig.json --emitDeclarationOnly",
     "build:css": "postcss --map --use autoprefixer -o dist/react-credit-card.css src/Card.css",
