@@ -1,6 +1,6 @@
 {
   "name": "@repay/react-credit-card",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta.1",
   "description": "Credit card display in React",
   "main": "dist/react-credit-card.cjs.js",
   "module": "dist/react-credit-card.esm.js",
