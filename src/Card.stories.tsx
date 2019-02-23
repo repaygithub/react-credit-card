@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { select, text, boolean } from '@storybook/addon-knobs/react'
-import ReactCreditCard from './Card'
+import ReactCreditCard, { FOCUS_TYPE } from './Card'
 import '../src/Card.css'
 
 const focusTypes = ['number', 'cvc', 'expiration', 'name']

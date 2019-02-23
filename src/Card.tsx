@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { formatCvc, formatExpiration, formatNumber, getCardInfo } from './helpers'
+import { getLogoSrc } from './cardValidation'
 
-type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
+export type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
 interface ReactCreditCardProps {
   number?: string
@@ -50,7 +51,7 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
                 {formatCvc(props.cvc, cardInfo.cvcLength)}
               </div>
             )}
-            <img className="ReactCreditCard__logo" src="" />
+            <img className="ReactCreditCard__logo" src={getLogoSrc(cardInfo.brand)} />
             <div className={displayClassName('number', props.focused)}>
               {formatNumber(props.number, cardInfo)}
             </div>
@@ -82,7 +83,7 @@ const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
 ReactCreditCard.defaultProps = {
   placeholderName: 'FULL NAME',
   expirationBefore: 'month/year',
-  expirationAfter: 'valid thru',
+  expirationAfter: 'valid\nthru',
 }
 
 function displayClassName(prop: FOCUS_TYPE, focused: FOCUS_TYPE | undefined): string {
