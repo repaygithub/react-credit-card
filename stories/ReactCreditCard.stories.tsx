@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { select, text, boolean } from '@storybook/addon-knobs/react'
-import ReactCreditCard, { FOCUS_TYPE } from './Card'
-import '../src/Card.css'
+import ReactCreditCard from '../src/ReactCreditCard'
+import '../src/ReactCreditCard.css'
 
 const focusTypes = ['number', 'cvc', 'expiration', 'name']
 const brandTypes = ['amex', 'mastercard', 'visa', 'discover', 'unknown']
@@ -14,17 +14,21 @@ const exampleBrandNumbers = {
 }
 
 storiesOf('react-credit-card', module)
-  .add('standard usage', () => (
-    <ReactCreditCard
-      number={text('number', '4111111111111111')}
-      name={text('name', 'CS Human')}
-      focused={select('focused', focusTypes)}
-      expiration={text('expiration', '01/27')}
-      cvc={text('cvc', '')}
-      hasRadialGradient={boolean('useRadialGradient', false)}
-      hasShadow={boolean('hasShadow', false)}
-    />
-  ))
+  .add(
+    'standard usage',
+    () => (
+      <ReactCreditCard
+        number={text('number', '4111111111111111')}
+        name={text('name', 'CS Human')}
+        focused={select('focused', focusTypes)}
+        expiration={text('expiration', '01/27')}
+        cvc={text('cvc', '')}
+        hasRadialGradient={boolean('useRadialGradient', false)}
+        hasShadow={boolean('hasShadow', false)}
+      />
+    ),
+    { info: { header: false, inline: true, source: true, disable: false } }
+  )
   .add('view built-in card brands', () => (
     <>
       <ReactCreditCard

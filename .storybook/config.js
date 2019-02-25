@@ -1,14 +1,16 @@
 import * as React from 'react'
-import { configure, addDecorator } from '@storybook/react'
-import { setOptions } from '@storybook/addon-options'
+import { configure, addParameters, addDecorator } from '@storybook/react'
 import { withKnobs } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
 
-setOptions({
-  name: '@repay/react-credit-card',
-  url: 'https://github.com/repaygithub/react-credit-card',
+addParameters({
+  options: {
+    name: '@repay/react-credit-card',
+    url: 'https://github.com/repaygithub/react-credit-card',
+  },
+  info: { disable: true },
 })
-// addDecorator(withInfo())
+addDecorator(withInfo())
 addDecorator(withKnobs)
 addDecorator(Story => (
   <div
@@ -27,7 +29,8 @@ addDecorator(Story => (
 ))
 
 function loadStories() {
-  require('../src/Card.stories.tsx')
+  require('../stories/ReactCreditCard.stories.tsx')
+  require('../stories/Examples.stories.tsx')
 }
 
 configure(loadStories, module)

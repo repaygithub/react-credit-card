@@ -6,6 +6,6 @@
     "outFile": "dist/react-credit-card.d.ts",
     "skipLibCheck": true
   },
-  "include": ["src/Card.tsx"],
+  "include": ["src/ReactCreditCard.tsx"],
   "exclude": ["node_modules"]
 }
