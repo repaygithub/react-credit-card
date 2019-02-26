@@ -5,7 +5,7 @@ import filesize from 'rollup-plugin-filesize'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import pkg from './package.json'
 
-const input = 'src/Card.tsx'
+const input = 'src/index.ts'
 const peerDeps = Object.keys(pkg.peerDependencies)
 
 export default [

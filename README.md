@@ -128,3 +128,12 @@ export default function CreditCardForm() {
 - `yarn tdd`: Runs the test suite in watch mode, which will trigger tests to re-run when changes are made.
 - `yarn test`: runs the full test suite, TypeScript checks, and validates formatting; then documents current coverage
 - `yarn fmt`: tries to automatically fixes formatting or errors to fix others
+- `yarn build`: builds the distributable package into the `dist/` folder
+
+### Publishing
+
+```
+yarn test:ci
+yarn build
+yarn publish
+```
