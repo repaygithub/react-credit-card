@@ -464,6 +464,36 @@
   opacity: 0.7;
 }
 
+.ReactCreditCard--ie-11.ReactCreditCard--flipped {
+  transform: 0deg;
+}
+
+.ReactCreditCard--ie-11.ReactCreditCard--flipped .ReactCreditCard__front,
+.ReactCreditCard--ie-11.ReactCreditCard--flipped .ReactCreditCard__back {
+  transform: rotateY(0deg);
+}
+
+.ReactCreditCard--ie-11 .ReactCreditCard__back::after {
+  left: 14%;
+}
+
+.ReactCreditCard--ie-11.ReactCreditCard--flipped .ReactCreditCard__back .ReactCreditCard__cvc {
+  transform: rotateY(180deg);
+  left: 5%;
+}
+
+.ReactCreditCard--ie-11.ReactCreditCard--flipped .ReactCreditCard__back .ReactCreditCard__shiny {
+  left: 84%;
+}
+.ReactCreditCard--ie-11.ReactCreditCard--flipped .ReactCreditCard__back .ReactCreditCard__shiny::after {
+  left: -480%;
+  transform: rotateY(180deg);
+}
+
+.ReactCreditCard--ie-11.ReactCreditCard--amex .ReactCreditCard__back {
+  display: none;
+}
+
 /* Card Brand Styles */
 
 .ReactCreditCard--unknown {

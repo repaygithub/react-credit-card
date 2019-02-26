@@ -2,6 +2,8 @@ import * as React from 'react'
 import { formatCvc, formatExpiration, formatNumber, getCardInfo } from './helpers'
 import { getLogoSrc } from './cardValidation'
 
+const IS_IE11 = window.navigator && /rv:11.0/i.test(window.navigator.userAgent)
+
 export type FOCUS_TYPE = 'number' | 'cvc' | 'expiration' | 'name'
 
 interface ReactCreditCardProps {
@@ -72,6 +74,7 @@ export const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
   let isFlipped = props.focused === 'cvc' && !isAmex
   const topClassName = classnames(
     'ReactCreditCard',
+    IS_IE11 && 'ReactCreditCard--ie-11',
     isFlipped && 'ReactCreditCard--flipped',
     `ReactCreditCard--${cardInfo.brand}`,
     cardInfo.brand !== 'unknown' && 'ReactCreditCard--identified',
