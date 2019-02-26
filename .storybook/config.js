@@ -8,11 +8,11 @@ addParameters({
     name: '@repay/react-credit-card',
     url: 'https://github.com/repaygithub/react-credit-card',
   },
-  info: { disable: true },
+  info: false,
 })
 addDecorator(withInfo())
 addDecorator(withKnobs)
-addDecorator(Story => (
+addDecorator(story => (
   <div
     style={{
       fontFamily: 'Helvetica, sans serif',
@@ -24,7 +24,7 @@ addDecorator(Story => (
       marginTop: '20px'
     }}
   >
-    <Story />
+    {story()}
   </div>
 ))
 

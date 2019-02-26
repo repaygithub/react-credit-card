@@ -27,7 +27,13 @@ storiesOf('react-credit-card', module)
         hasShadow={boolean('hasShadow', false)}
       />
     ),
-    { info: { header: false, inline: true, source: true, disable: false } }
+    {
+      info: {
+        header: false,
+        inline: true,
+        source: true,
+      },
+    }
   )
   .add('view built-in card brands', () => (
     <>
@@ -53,7 +59,7 @@ storiesOf('react-credit-card', module)
     <ReactCreditCard
       number={text('number', '4111111111111111')}
       name={text('name', '')}
-      type={select('type', brandTypes, undefined)}
+      type={select('type', brandTypes, 'amex')}
       focused={select('focused', focusTypes, 'name')}
       expiration={text('expiration', '01/27')}
     />
