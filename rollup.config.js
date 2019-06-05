@@ -22,6 +22,7 @@ export default [
         file: pkg.main,
         format: 'cjs',
         sourcemap: true,
+        exports: 'named',
       },
     ],
     plugins: [
