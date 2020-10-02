@@ -25,7 +25,7 @@
     "test": "yarn test:base",
     "test:types": "tsc --project tsconfig.json --noEmit",
     "test:ci": "yarn test:base",
-    "posttest": "node --experimental-modules scripts/save-coverage",
+    "posttest": "node --experimental-modules scripts/save-coverage.mjs",
     "posttest:ci": "yarn posttest --test",
     "commit": "git-cz"
   },
