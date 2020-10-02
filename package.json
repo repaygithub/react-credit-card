@@ -26,7 +26,8 @@
     "test:types": "tsc --project tsconfig.json --noEmit",
     "test:ci": "yarn test:base",
     "posttest": "node --experimental-modules scripts/save-coverage",
-    "posttest:ci": "yarn posttest --test"
+    "posttest:ci": "yarn posttest --test",
+    "commit": "git-cz"
   },
   "repository": "https://github.com/repaygithub/react-credit-card",
   "contributors": [
@@ -48,6 +49,11 @@
       "json-summary"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@repay/babel-preset": "^0.2.0",
@@ -63,6 +69,9 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.6",
+    "commitizen": "^4.2.1",
+    "conventional-commits-parser": "^3.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-config-react": "^1.1.7",
