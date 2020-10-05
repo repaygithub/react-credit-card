@@ -1,9 +1,7 @@
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import * as React from 'react'
 
 import ReactCreditCard from './ReactCreditCard'
-
-afterEach(cleanup)
 
 describe('React Credit Card', () => {
   test('should match snapshot', () => {

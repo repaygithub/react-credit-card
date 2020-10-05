@@ -39,9 +39,6 @@
     "setupFilesAfterEnv": [
       "<rootDir>/tests/setup.ts"
     ],
-    "transform": {
-      "^.+\\.(t|j)sx?$": "babel-jest"
-    },
     "testRegex": "src/.*\\.test\\.(jsx?|tsx?)$",
     "coverageReporters": [
       "lcov",
@@ -62,19 +59,19 @@
     "@storybook/addon-knobs": "^5.1.1",
     "@storybook/addon-options": "^5.1.1",
     "@storybook/react": "^5.1.1",
-    "@testing-library/react": "^8.0.1",
-    "@types/jest": "^24.0.6",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@types/jest": "^26.0.14",
     "@types/react": "^16.8.3",
     "autoprefixer": "^9.4.8",
-    "babel-jest": "^24.1.0",
+    "babel-jest": "^26.5.0",
     "babel-loader": "^8.0.6",
     "commitizen": "^4.2.1",
     "conventional-commits-parser": "^3.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.10.0",
     "gh-pages": "^2.0.1",
-    "jest": "^24.1.0",
-    "jest-dom": "^3.1.2",
+    "jest": "^26.5.0",
     "postcss-cli": "^6.1.2",
     "prettier": "^2.1.2",
     "react": "^16.8.2",
