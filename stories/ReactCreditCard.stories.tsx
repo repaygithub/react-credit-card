@@ -1,8 +1,10 @@
-import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { select, text, boolean } from '@storybook/addon-knobs/react'
-import ReactCreditCard from '../src/ReactCreditCard'
 import '../src/ReactCreditCard.css'
+
+import { boolean, select, text } from '@storybook/addon-knobs/react'
+import { storiesOf } from '@storybook/react'
+import * as React from 'react'
+
+import ReactCreditCard from '../src/ReactCreditCard'
 
 const focusTypes = ['number', 'cvc', 'expiration', 'name']
 const brandTypes = ['amex', 'mastercard', 'visa', 'discover', 'unknown']

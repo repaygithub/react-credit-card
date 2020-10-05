@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { formatCvc, formatExpiration, formatNumber, getCardInfo } from './helpers'
+
 import { getLogoSrc } from './cardValidation'
+import { formatCvc, formatExpiration, formatNumber, getCardInfo } from './helpers'
 
 const IS_IE11 = window.navigator && /rv:11.0/i.test(window.navigator.userAgent)
 
@@ -68,10 +69,10 @@ const classnames = (...args) =>
     }, '')
     .trim()
 
-export const ReactCreditCard: React.FC<ReactCreditCardProps> = props => {
-  let cardInfo = getCardInfo(props.number, props.type)
-  let isAmex = cardInfo.brand === 'amex'
-  let isFlipped = props.focused === 'cvc' && !isAmex
+export const ReactCreditCard: React.FC<ReactCreditCardProps> = (props) => {
+  const cardInfo = getCardInfo(props.number, props.type)
+  const isAmex = cardInfo.brand === 'amex'
+  const isFlipped = props.focused === 'cvc' && !isAmex
   const topClassName = classnames(
     'ReactCreditCard',
     IS_IE11 && 'ReactCreditCard--ie-11',

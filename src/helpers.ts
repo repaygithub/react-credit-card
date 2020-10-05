@@ -1,7 +1,7 @@
 import { cardFromNumber, cardFromType, CardInfo } from './cardValidation'
 
 function getCardInfo(number: string, type?: string): CardInfo {
-  let cardInfo = type ? cardFromType(type) : cardFromNumber(number || '')
+  const cardInfo = type ? cardFromType(type) : cardFromNumber(number || '')
   return cardInfo
 }
 
@@ -46,7 +46,7 @@ function formatExpiration(expiration?: string): string {
     return '••/••'
   } else {
     expiration = expiration.toString().replace(/\D/g, '')
-    let expirationMaxLength = 6
+    const expirationMaxLength = 6
 
     while (expiration.length < 4) {
       expiration += '•'
@@ -56,7 +56,7 @@ function formatExpiration(expiration?: string): string {
   }
 }
 
-function formatCvc(cvc: string | undefined, cvcLength: number) {
+function formatCvc(cvc: string | undefined, cvcLength: number): string {
   if (!cvc) {
     cvc = ''
   }
