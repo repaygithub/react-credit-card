@@ -32,6 +32,7 @@ export default [
       }),
       babel({
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.es6', '.es', '.mjs'],
+        runtimeHelpers: true,
       }),
       cleanup(),
       sourceMaps(),
