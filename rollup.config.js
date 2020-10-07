@@ -1,7 +1,7 @@
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
 import cleanup from 'rollup-plugin-cleanup'
 import filesize from 'rollup-plugin-filesize'
-import resolve from 'rollup-plugin-node-resolve'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 
 import pkg from './package.json'
@@ -31,8 +31,8 @@ export default [
         extensions: ['.js', 'jsx', '.ts', '.tsx'],
       }),
       babel({
+        babelHelpers: 'runtime',
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.es6', '.es', '.mjs'],
-        runtimeHelpers: true,
       }),
       cleanup(),
       sourceMaps(),
