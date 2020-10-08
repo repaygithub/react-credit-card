@@ -1,5 +1,6 @@
-import React from 'react'
 import { storiesOf } from '@storybook/react'
+import React from 'react'
+
 import ReactCreditCard, { FOCUS_TYPE } from '../src/ReactCreditCard'
 
 const styles: React.CSSProperties = {
@@ -26,15 +27,15 @@ function FormWithCard() {
     cvc: '',
   })
   const handleChange = React.useCallback(
-    event => {
+    (event) => {
       const { name, value } = event.target
-      setValues(v => ({ ...v, [name]: value }))
+      setValues((v) => ({ ...v, [name]: value }))
     },
     [setValues]
   )
 
   const [focused, setFocus] = React.useState<FOCUS_TYPE | undefined>(undefined)
-  const handleFocus = React.useCallback(event => setFocus(event.target.name as FOCUS_TYPE), [
+  const handleFocus = React.useCallback((event) => setFocus(event.target.name as FOCUS_TYPE), [
     setFocus,
   ])
   const handleBlur = React.useCallback(() => setFocus(undefined), [setFocus])

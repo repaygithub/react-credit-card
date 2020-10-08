@@ -1,10 +1,12 @@
-import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { select, text, boolean } from '@storybook/addon-knobs/react'
-import ReactCreditCard from '../src/ReactCreditCard'
 import '../src/ReactCreditCard.css'
 
-const focusTypes = ['number', 'cvc', 'expiration', 'name']
+import { boolean, select, text } from '@storybook/addon-knobs'
+import { storiesOf } from '@storybook/react'
+import * as React from 'react'
+
+import ReactCreditCard, { FOCUS_TYPE } from '../src/ReactCreditCard'
+
+const focusTypes: FOCUS_TYPE[] = ['number', 'cvc', 'expiration', 'name']
 const brandTypes = ['amex', 'mastercard', 'visa', 'discover', 'unknown']
 const exampleBrandNumbers = {
   Visa: '4111111111111111',
@@ -20,7 +22,7 @@ storiesOf('react-credit-card', module)
       <ReactCreditCard
         number={text('number', '4111111111111111')}
         name={text('name', 'CS Human')}
-        focused={select('focused', focusTypes)}
+        focused={select<FOCUS_TYPE>('focused', focusTypes, 'number')}
         expiration={text('expiration', '01/27')}
         cvc={text('cvc', '')}
         hasRadialGradient={boolean('useRadialGradient', false)}
@@ -40,7 +42,7 @@ storiesOf('react-credit-card', module)
       <ReactCreditCard
         number={select('built-in brands', exampleBrandNumbers, exampleBrandNumbers.Visa)}
         name={text('name', 'CS Human')}
-        focused={select('focused', focusTypes)}
+        focused={select<FOCUS_TYPE>('focused', focusTypes, 'number')}
         expiration={text('expiration', '')}
       />
       <Note>*Note American Express does not flip when CVC is focused like other brands.</Note>
@@ -51,7 +53,7 @@ storiesOf('react-credit-card', module)
       number={text('number', '')}
       name={text('name', '')}
       placeholderName={text('placeholderName', 'Person One')}
-      focused={select('focused', focusTypes)}
+      focused={select<FOCUS_TYPE>('focused', focusTypes, 'number')}
       expiration={text('expiration', '')}
     />
   ))

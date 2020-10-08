@@ -65,7 +65,7 @@ const unknownCardInfo: CardInfo = Object.freeze({
 })
 
 export function cardFromType(brand: string): CardInfo {
-  let card = cards.find(card => {
+  const card = cards.find((card) => {
     return brand === card.brand
   })
   return card || unknownCardInfo
@@ -73,7 +73,7 @@ export function cardFromType(brand: string): CardInfo {
 
 export function cardFromNumber(number: string): CardInfo {
   number = number.replace(/\D/g, '')
-  let card = cards.find(card => {
+  const card = cards.find((card) => {
     return card.pattern.test(number)
   })
   return card || unknownCardInfo

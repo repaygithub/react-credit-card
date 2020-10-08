@@ -1,8 +1,9 @@
-import resolve from 'rollup-plugin-node-resolve'
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
 import cleanup from 'rollup-plugin-cleanup'
 import filesize from 'rollup-plugin-filesize'
 import sourceMaps from 'rollup-plugin-sourcemaps'
+
 import pkg from './package.json'
 
 const input = 'src/index.ts'
@@ -11,7 +12,7 @@ const peerDeps = Object.keys(pkg.peerDependencies)
 export default [
   {
     input,
-    external: id => peerDeps.includes(id),
+    external: (id) => peerDeps.includes(id),
     output: [
       {
         file: pkg.module,
@@ -30,6 +31,7 @@ export default [
         extensions: ['.js', 'jsx', '.ts', '.tsx'],
       }),
       babel({
+        babelHelpers: 'runtime',
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.es6', '.es', '.mjs'],
       }),
       cleanup(),

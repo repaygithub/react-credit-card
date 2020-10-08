@@ -25,8 +25,9 @@
     "test": "yarn test:base",
     "test:types": "tsc --project tsconfig.json --noEmit",
     "test:ci": "yarn test:base",
-    "posttest": "node --experimental-modules scripts/save-coverage",
-    "posttest:ci": "yarn posttest --test"
+    "posttest": "node --experimental-modules scripts/save-coverage.mjs",
+    "posttest:ci": "yarn posttest --test",
+    "commit": "git-cz"
   },
   "repository": "https://github.com/repaygithub/react-credit-card",
   "contributors": [
@@ -38,9 +39,6 @@
     "setupFilesAfterEnv": [
       "<rootDir>/tests/setup.ts"
     ],
-    "transform": {
-      "^.+\\.(t|j)sx?$": "babel-jest"
-    },
     "testRegex": "src/.*\\.test\\.(jsx?|tsx?)$",
     "coverageReporters": [
       "lcov",
@@ -48,42 +46,45 @@
       "json-summary"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@repay/babel-preset": "^0.2.0",
-    "@repay/eslint-config": "^1.0.2",
-    "@storybook/addon-info": "^5.1.1",
-    "@storybook/addon-knobs": "^5.1.1",
-    "@storybook/addon-options": "^5.1.1",
-    "@storybook/react": "^5.1.1",
-    "@testing-library/react": "^8.0.1",
-    "@types/jest": "^24.0.6",
-    "@types/react": "^16.8.3",
-    "autoprefixer": "^9.4.8",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.1.0",
-    "babel-loader": "^8.0.6",
-    "eslint": "^5.14.1",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-config-react": "^1.1.7",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "gh-pages": "^2.0.1",
-    "jest": "^24.1.0",
-    "jest-dom": "^3.1.2",
-    "postcss-cli": "^6.1.2",
-    "prettier": "^1.16.4",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "rimraf": "^2.6.3",
-    "rollup": "^1.2.2",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-cleanup": "^3.1.1",
-    "rollup-plugin-filesize": "^6.0.1",
-    "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "typescript": "^3.3.3",
-    "typescript-eslint-parser": "^22.0.0"
+    "@babel/core": "^7.11.6",
+    "@repay/babel-preset": "^1.0.0",
+    "@repay/eslint-config": "^3.1.0",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-knobs": "^6.0.26",
+    "@storybook/addon-options": "^5.3.21",
+    "@storybook/react": "^6.0.26",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@types/jest": "^26.0.14",
+    "@types/react": "^16.9.51",
+    "autoprefixer": "^10.0.1",
+    "babel-jest": "^26.5.0",
+    "babel-loader": "^8.1.0",
+    "commitizen": "^4.2.1",
+    "conventional-commits-parser": "^3.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.10.0",
+    "gh-pages": "^3.1.0",
+    "jest": "^26.5.0",
+    "postcss": "^8.1.1",
+    "postcss-cli": "^8.0.0",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.28.2",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-filesize": "^9.0.2",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "typescript": "^4.0.3"
   },
   "peerDependencies": {
     "react": "^16.8.3",

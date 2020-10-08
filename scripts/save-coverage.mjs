@@ -1,10 +1,10 @@
-import path from 'path'
 import fileSystem from 'fs'
+import path from 'path'
 
 const fs = fileSystem.promises
 let cwd = process.cwd()
 const ARGS = process.argv
-;(async function() {
+;(async function () {
   let coverage, total
   try {
     const coverageFile = path.join(cwd, 'coverage/coverage-summary.json')
@@ -44,7 +44,7 @@ const ARGS = process.argv
       fs.writeFile(path.join(cwd, 'Coverage.md'), markdown, 'utf8'),
     ])
   }
-})().catch(error => {
+})().catch((error) => {
   console.log(error.stack)
   console.error(`[ERR] there was an unexpected error displayed above`)
   process.exit(1)
@@ -73,7 +73,7 @@ function generateBadgeMarkdown(coverage, badgeUrl) {
 
 function generateMarkdown(total, files) {
   const maxFileNameLength = Object.keys(files)
-    .map(n => n.length)
+    .map((n) => n.length)
     .sort()
     .pop()
   return (
@@ -84,7 +84,7 @@ function generateMarkdown(total, files) {
 | ${':---'.padEnd(maxFileNameLength, '-')} | ------: | -------: | ------: | ------: |
 ${generateMdRow(maxFileNameLength, 'Total', total)}
 ${Object.keys(files)
-  .map(name => generateMdRow(maxFileNameLength, name, files[name]))
+  .map((name) => generateMdRow(maxFileNameLength, name, files[name]))
   .join('\n')}
   `.trim() + '\n'
   )

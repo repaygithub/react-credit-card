@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { configure, addParameters, addDecorator } from '@storybook/react'
-import { withKnobs } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
+import { withKnobs } from '@storybook/addon-knobs'
+import { addDecorator, addParameters, configure } from '@storybook/react'
+import * as React from 'react'
 
 addParameters({
   options: {
@@ -12,7 +12,7 @@ addParameters({
 })
 addDecorator(withInfo())
 addDecorator(withKnobs)
-addDecorator(story => (
+addDecorator((story) => (
   <div
     style={{
       fontFamily: 'Helvetica, sans serif',
@@ -21,7 +21,7 @@ addDecorator(story => (
       alignItems: 'center',
       width: '100vw',
       flexDirection: 'column',
-      marginTop: '20px'
+      marginTop: '20px',
     }}
   >
     {story()}
