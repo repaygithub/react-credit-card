@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react'
 import React from 'react'
 
 import ReactCreditCard, { FOCUS_TYPE } from '../src/ReactCreditCard'
@@ -10,16 +9,15 @@ const styles: React.CSSProperties = {
   flexDirection: 'column',
 }
 
-storiesOf('TypeScript Usage Example', module).add('As a Form', () => <FormWithCard />, {
-  options: { showAddonPanel: false },
-  info: {
-    header: false,
-    inline: true,
-    source: true,
+export default {
+  title: 'TypeScript Usage Example',
+  component: ReactCreditCard,
+  parameters: {
+    knobs: { disabled: true },
   },
-})
+}
 
-function FormWithCard() {
+export const AsAForm = (): React.ReactElement => {
   const [values, setValues] = React.useState({
     name: '',
     number: '4111111111111111',
