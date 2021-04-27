@@ -87,6 +87,6 @@
   },
   "peerDependencies": {
     "react": "^16.8.3 || ^17.0.0",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3 || ^17.0.0"
   }
 }
